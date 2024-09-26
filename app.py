@@ -69,13 +69,13 @@ def featurization(image_path, model):
     return predictions
 
 # get the featurization model
-#portrait_featurized_model = get_mobilenetv2_model()
+portrait_featurized_model = get_mobilenetv2_model()
 rating_featurized_model = get_convext_model()
 
 
 
 # load Portrait model
-#Portrait_model = load_sklearn_models("best_model_mlp")
+Portrait_model = load_sklearn_models("best_model_mlp")
 
 # load Rating model
 Rating_model = load_sklearn_models("best-rating-model")
@@ -115,13 +115,13 @@ if image:
 
   #get the features
   with st.spinner("Processing......."):
-   # image_features = featurization(IMAGE_NAME, portrait_featurized_model)
+    image_features = featurization(IMAGE_NAME, portrait_featurized_model)
     rating_image_features = featurization(IMAGE_NAME, rating_featurized_model)
 
     #getting prediction from portrait model
-   # model_predict = Portrait_model.predict(image_features)
-   # model_predict_proba = Portrait_model.predict_proba(image_features)
-   # probability = model_predict_proba[0][model_predict[0]]
+    model_predict = Portrait_model.predict(image_features)
+    model_predict_proba = Portrait_model.predict_proba(image_features)
+    probability = model_predict_proba[0][model_predict[0]]
 
 
     #getting prediction from rating model
@@ -135,8 +135,7 @@ if image:
 
   with col1:
     st.header("Celebrity Name")
-    #st.header("{}".format(PREDICTION_LABELS[model_predict[0]]))
+    st.header("{}".format(PREDICTION_LABELS[model_predict[0]]))
   with col2:
     st.header("Rating")
     st.header("{}".format(PREDICTION_RATINGS[int(rating_model_predict[0])]))
-
