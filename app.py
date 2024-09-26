@@ -78,7 +78,7 @@ rating_featurized_model = get_convext_model()
 #Portrait_model = load_sklearn_models("best_model_mlp")
 
 # load Rating model
-Rating_model = load_sklearn_models("best_model-rating-classification")
+Rating_model = load_sklearn_models("best-rating-model")
 
 
 
